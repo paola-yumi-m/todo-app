@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from "react";
+import { TaskMenu } from "./TaskMenu";
+import { NewTask } from "./NewTask";
+import { AppList } from "./AppList";
+import './styles.css';
+import { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+    const [ taskList, setTaskList ] = useState(['Task 1', 'Task 2', 'Task 3']);
+    const [ newTask, setNewTask ] = useState(null);
+    console.log(taskList);
+
+    useEffect(() => {
+
+    }, [taskList]);
+
+    return (
+        <div className='grid-container'>
+            <TaskMenu />
+            <NewTask taskList={taskList} setTaskList={setTaskList} newTask={newTask} setNewTask={setNewTask} />
+            <AppList taskList={taskList} />
+        </div>
+    );
 }
-
-export default App;
