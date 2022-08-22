@@ -49,21 +49,44 @@ body {
     align-items: center;
 }
 
+.task-list {
+    display: flex;
+    align-items: center;
+}
+
 .list-item {
     text-decoration: none;
+    padding-right: 20px;
 }
 
 .list-item-disabled {
     text-decoration: line-through;
+    padding-right: 20px;
+}
+
+.delete-icon {
+    cursor: pointer;
+}
+
+.new-task-container {
+    display: flex;
+    align-items: center;
 }
 
 .new-task-field {
-    height: 30px;
     width: 400px;
 }
 
 .new-task-button {
-    margin: 0 10px;
-    height: 30px;
-    width: 50px;
+    left: 20px;
+}
+
+.completed-item-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.completed-item {
+    list-style-type: none;
+    padding-left: 15px;
 }

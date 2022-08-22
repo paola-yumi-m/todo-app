@@ -1,24 +1,42 @@
 import React, {useEffect} from "react";
-import { TaskMenu } from "./TaskMenu";
+import { CompletedTasks } from "./CompletedTasks";
 import { NewTask } from "./NewTask";
 import { AppList } from "./AppList";
 import './styles.css';
 import { useState } from "react";
 
 export const App = () => {
-    const [ taskList, setTaskList ] = useState(['Task 1', 'Task 2', 'Task 3']);
-    const [ newTask, setNewTask ] = useState(null);
-    console.log(taskList);
+    const [ taskList, setTaskList ] = useState([
+        {
+            name: 'Task 1',
+            id: 0
+        }, {
+            name: 'Task 2',
+            id: 1
+        }, {
+            name: 'Task 3',
+            id: 2
+        }]);
+    const [ isChecked, setIsChecked ] = useState([]);
+    const [ lastId, setLastId ] = useState(0);
+    const [ newTask, setNewTask ] = useState({name: '', id: lastId});
 
     useEffect(() => {
+        setLastId(taskList[taskList.length - 1].id);
+    }, [taskList, isChecked]);
 
-    }, [taskList]);
+    const deleteTask = (id) => {
+        const currentId = id;
+        console.log(currentId);
+        setTaskList((prevState) => prevState.filter((task) => task.id !== currentId));
+        setIsChecked((prevState) => prevState.filter((task) => task.id !== currentId));
+    }
 
     return (
         <div className='grid-container'>
-            <TaskMenu />
-            <NewTask taskList={taskList} setTaskList={setTaskList} newTask={newTask} setNewTask={setNewTask} />
-            <AppList taskList={taskList} />
+            <CompletedTasks isChecked={isChecked} setIsChecked={setIsChecked} taskList={taskList} />
+            <NewTask taskList={taskList} setTaskList={setTaskList} newTask={newTask} setNewTask={setNewTask} lastId={lastId} />
+            <AppList taskList={taskList} deleteTask={deleteTask} isChecked={isChecked} setIsChecked={setIsChecked} />
         </div>
     );
 }
