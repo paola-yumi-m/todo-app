@@ -7,12 +7,13 @@ export const AppList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
         if (e.target.checked) {
             setIsChecked([...isChecked, e.target.value])
         } else {
-            setIsChecked(() => isChecked.filter((task) => task.id !== e.target.value));
+            setIsChecked(() => isChecked.filter((id) => id !== e.target.value
+            ));
         }
     }
 
     function setStyle(id) {
-        if (isChecked.includes(taskList[id])) {
+        if (isChecked.includes(id.toString())) {
             return 'list-item-disabled'
         }
         return 'list-item';
@@ -25,7 +26,7 @@ export const AppList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
     }
 
     function getTasks() {
-        return taskList.map((task) => <div className='task-list' id={task.id}>
+        return taskList.map((task) => <div className='task-list' key={task.id}>
             <Checkbox value={task.id} onChange={handleCheckboxClick} />
             <span className={setStyle(task.id)}>{task.name}</span>
             <div id={task.id} onClick={handleDelete}><DeleteIcon className='delete-icon' /></div>

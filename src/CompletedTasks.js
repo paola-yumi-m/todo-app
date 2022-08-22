@@ -1,9 +1,10 @@
 import React from "react";
 import CheckIcon from '@mui/icons-material/Check';
 
-export const CompletedTasks = ({ isChecked, setIsChecked }) => {
+export const CompletedTasks = ({ isChecked, taskList }) => {
     function getCompletedTasks() {
-        return isChecked.map((task) => <div className='completed-item-container'><CheckIcon /><li className='completed-item' key={task.id}>{task.name}</li></div>);
+        const completed = taskList.filter((task) => isChecked.includes(task.id.toString()));
+        return completed.map((task) => <div className='completed-item-container' key={task.id}><CheckIcon/><li className='completed-item'>{task.name}</li></div>);
     }
 
     return (
