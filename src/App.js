@@ -22,14 +22,15 @@ export const App = () => {
     const [ newTask, setNewTask ] = useState({name: '', id: lastId});
 
     useEffect(() => {
-        setLastId(taskList[taskList.length - 1].id);
+        if (taskList.length > 0) {
+            setLastId(taskList[taskList.length - 1].id);
+        }
     }, [taskList, isChecked]);
 
     const deleteTask = (id) => {
         const currentId = id;
-        console.log(currentId);
-        setTaskList((prevState) => prevState.filter((task) => task.id !== currentId));
-        setIsChecked((prevState) => prevState.filter((task) => task.id !== currentId));
+        setTaskList((prevState) => prevState.filter((task) => task.id.toString() !== currentId));
+        setIsChecked((prevState) => prevState.filter((task) => task !== currentId));
     }
 
     return (
