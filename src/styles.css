@@ -8,19 +8,20 @@ body {
     display: grid;
     height: 100vw;
     grid-template-columns: 20% 80%;
-    grid-template-rows: 20% 80%;
-    background-color: yellow;
+    grid-template-rows: 10% 90%;
+    background-color: cadetblue;
 }
 
 .task-menu {
     grid-row: 1 / span 2;
     background-color: aquamarine;
     padding: 20px;
+    margin-right: 5px;
 }
 
 .new-task {
     grid-row: 1 / span 1;
-    background-color: gray;
+    background-color: antiquewhite;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -34,7 +35,7 @@ body {
 
 .app-list {
     grid-row: 2 / span 1;
-    background-color: blueviolet;
+    background-color: antiquewhite;
     padding: 20px;
 }
 
