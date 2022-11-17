@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { CompletedTasks } from "./CompletedTasks";
-import { NewTask } from "./NewTask";
+import { NewTask } from "./NewTask/NewTask";
 import { AppList } from "./AppList";
 import './styles.css';
 import { useState } from "react";
