@@ -8,18 +8,18 @@ import { useState } from "react";
 export const App = () => {
     const [ taskList, setTaskList ] = useState([
         {
-            name: 'Task 1',
+            taskName: 'Task 1',
             id: 0
         }, {
-            name: 'Task 2',
+            taskName: 'Task 2',
             id: 1
         }, {
-            name: 'Task 3',
+            taskName: 'Task 3',
             id: 2
         }]);
     const [ isChecked, setIsChecked ] = useState([]);
     const [ lastId, setLastId ] = useState(0);
-    const [ newTask, setNewTask ] = useState({name: '', id: lastId});
+    const [ newTask, setNewTask ] = useState({taskName: '', id: lastId});
 
     useEffect(() => {
         if (taskList.length > 0) {

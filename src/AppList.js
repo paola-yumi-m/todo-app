@@ -28,7 +28,7 @@ export const AppList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
     function getTasks() {
         return taskList.map((task) => <div className='task-list' key={task.id}>
             <Checkbox value={task.id} onChange={handleCheckboxClick} />
-            <span className={setStyle(task.id)}>{task.name}</span>
+            <span className={setStyle(task.id)}>{task.taskName}</span>
             <div id={task.id} onClick={handleDelete}><DeleteIcon className='delete-icon' /></div>
         </div>)
     }
