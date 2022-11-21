@@ -19,7 +19,6 @@ export const App = () => {
         }]);
     const [ isChecked, setIsChecked ] = useState([]);
     const [ lastId, setLastId ] = useState(0);
-    const [ newTask, setNewTask ] = useState({taskName: '', id: lastId});
 
     useEffect(() => {
         if (taskList.length > 0) {
@@ -36,7 +35,7 @@ export const App = () => {
     return (
         <div className='grid-container'>
             <CompletedTasks isChecked={isChecked} setIsChecked={setIsChecked} taskList={taskList} />
-            <NewTask taskList={taskList} setTaskList={setTaskList} newTask={newTask} setNewTask={setNewTask} lastId={lastId} />
+            <NewTask taskList={taskList} setTaskList={setTaskList} lastId={lastId} />
             <AppList taskList={taskList} deleteTask={deleteTask} isChecked={isChecked} setIsChecked={setIsChecked} />
         </div>
     );

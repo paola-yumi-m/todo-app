@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {Button, TextField} from "@mui/material";
 
-export const NewTask = ({ taskList, setTaskList, newTask, setNewTask, lastId }) => {
+export const NewTask = ({ taskList, setTaskList, lastId }) => {
+    const [ newTask, setNewTask ] = useState({taskName: '', id: lastId});
+
     function handleChange(e) {
-        setNewTask({name: e.target.value, id: lastId + 1});
+        setNewTask({taskName: e.target.value, id: lastId + 1});
     }
 
     function handleSubmit() {

@@ -1,4 +1,4 @@
-import {fireEvent, render, screen } from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import '@testing-library/jest-dom';
 import {NewTask} from "../NewTask";
 import userEvent from "@testing-library/user-event";
@@ -36,7 +36,7 @@ describe('NewTask', () => {
             />
         );
         const inputElement = screen.getByPlaceholderText('Task Name');
-        fireEvent.change(inputElement, {target: {value: 'helloooo'}});
+        fireEvent.change(inputElement, {target: {value: 'Walk on the beach'}});
         expect(inputElement).toHaveValue('Walk on the beach');
     });
 
@@ -53,7 +53,7 @@ describe('NewTask', () => {
                 lastId={0}
             />
         );
-        const inputElement = screen.getByPlaceholderText(/Task Name/i);
+        const inputElement = screen.getByPlaceholderText('Task Name');
         const buttonElement = screen.getByRole('button', {name: 'Add Task'});
         userEvent.type(inputElement, 'Hi');
         fireEvent.click(buttonElement);
