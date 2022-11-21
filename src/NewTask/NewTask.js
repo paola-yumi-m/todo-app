@@ -15,8 +15,7 @@ export const NewTask = ({ taskList, setTaskList, newTask, setNewTask, lastId }) 
         <div className='new-task'>
             <h1>New Task</h1>
             <div className='new-task-container'>
-                <input aria-label={'test'} onChange={handleChange} value={newTask.taskName}/>
-                <TextField className='new-task-field' label='Task Name' onChange={handleChange} value={newTask.taskName} id={newTask.id.toString()} />
+                <TextField className='new-task-field' placeholder='Task Name' onChange={handleChange} value={newTask.taskName} id={newTask.id.toString()} />
                 <Button className='new-task-button' variant='outlined' onClick={handleSubmit}>Add Task</Button>
             </div>
         </div>
