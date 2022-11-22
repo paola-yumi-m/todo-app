@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {Checkbox, SvgIcon} from "@mui/material";
+import React from "react";
+import {Checkbox} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const AppList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
+export const TaskList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
     function handleCheckboxClick(e) {
         if (e.target.checked) {
             setIsChecked([...isChecked, e.target.value])
@@ -28,7 +28,7 @@ export const AppList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
     function getTasks() {
         return taskList.map((task) => <div className='task-list' key={task.id}>
             <Checkbox value={task.id} onChange={handleCheckboxClick} />
-            <span className={setStyle(task.id)}>{task.taskName}</span>
+            <span data-testid='span' className={setStyle(task.id)}>{task.taskName}</span>
             <div id={task.id} onClick={handleDelete}><DeleteIcon className='delete-icon' /></div>
         </div>)
     }
@@ -36,7 +36,7 @@ export const AppList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
     return(
         <div className='app-list'>
             <h1>Tasks</h1>
-            <div>{getTasks()}</div>
+            <ul>{getTasks()}</ul>
         </div>
     );
 }

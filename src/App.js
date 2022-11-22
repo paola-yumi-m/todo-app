@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { CompletedTasks } from "./CompletedTasks";
 import { NewTask } from "./NewTask/NewTask";
-import { AppList } from "./AppList";
+import { TaskList } from "./TaskList/TaskList";
 import './styles.css';
 import { useState } from "react";
 
@@ -36,7 +36,7 @@ export const App = () => {
         <div className='grid-container'>
             <CompletedTasks isChecked={isChecked} setIsChecked={setIsChecked} taskList={taskList} />
             <NewTask taskList={taskList} setTaskList={setTaskList} lastId={lastId} />
-            <AppList taskList={taskList} deleteTask={deleteTask} isChecked={isChecked} setIsChecked={setIsChecked} />
+            <TaskList taskList={taskList} deleteTask={deleteTask} isChecked={isChecked} setIsChecked={setIsChecked} />
         </div>
     );
 }
