@@ -5,15 +5,12 @@ import userEvent from "@testing-library/user-event";
 
 describe('NewTask', () => {
     it('should render input element', () => {
-        const mockedSetTaskList = jest.fn();
-        const mockedSetNewTask = jest.fn();
-        const newTask = {taskName: '', id: 0};
         render(
             <NewTask
             taskList={['Do homework', 'Clean house', 'Feed the dog']}
-            setTaskList={mockedSetTaskList}
-            newTask={newTask}
-            setNewTask={mockedSetNewTask}
+            setTaskList={jest.fn()}
+            newTask={{taskName: '', id: 0}}
+            setNewTask={jest.fn()}
             lastId={0}
             />
         );
@@ -22,16 +19,12 @@ describe('NewTask', () => {
     });
 
     it('should be able to type in input',  async () => {
-        const mockedSetTaskList = jest.fn();
-        const mockedSetNewTask = jest.fn();
-        const newTask = {taskName: '', id: 0};
-
         render(
             <NewTask
                 taskList={['Do homework', 'Clean house', 'Feed the dog']}
-                setTaskList={mockedSetTaskList}
-                setNewTask={mockedSetNewTask}
-                newTask={newTask}
+                setTaskList={jest.fn()}
+                setNewTask={jest.fn()}
+                newTask={{taskName: '', id: 0}}
                 lastId={0}
             />
         );
@@ -40,16 +33,27 @@ describe('NewTask', () => {
         expect(inputElement).toHaveValue('Walk on the beach');
     });
 
-    it('should clear input when button Add is clicked', () => {
-        const mockedSetTaskList = jest.fn();
-        const mockedSetNewTask = jest.fn();
-        const newTask = {taskName: 'hello', id: 0};
+    it('should render Add button', () => {
+        render(
+            <NewTask
+                taskList={[]}
+                setTaskList={jest.fn()}
+                newTask={{taskName: '', id: 0}}
+                setNewTask={jest.fn()}
+                lastId={0}
+            />
+        );
+        const buttonElement = screen.getByRole('button', {name: 'Add Task'});
+        expect(buttonElement).toBeInTheDocument();
+    })
+
+    it('should clear input when Add button is clicked', () => {
         render(
             <NewTask
                 taskList={['Do homework', 'Clean house', 'Feed the dog']}
-                setTaskList={mockedSetTaskList}
-                newTask={newTask}
-                setNewTask={mockedSetNewTask}
+                setTaskList={jest.fn()}
+                newTask={{taskName: 'hello', id: 0}}
+                setNewTask={jest.fn()}
                 lastId={0}
             />
         );
