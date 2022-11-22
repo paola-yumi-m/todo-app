@@ -2,14 +2,9 @@ import React from "react";
 import {Checkbox} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const TaskList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
-    function handleCheckboxClick(e) {
-        if (e.target.checked) {
-            setIsChecked([...isChecked, e.target.value])
-        } else {
-            setIsChecked(() => isChecked.filter((id) => id !== e.target.value
-            ));
-        }
+export const TaskList = ({ taskList, deleteTask, isChecked, handleCheckboxClick }) => {
+    function handleClick(e) {
+        handleCheckboxClick(e);
     }
 
     function setStyle(id) {
@@ -27,7 +22,7 @@ export const TaskList = ({ taskList, deleteTask, isChecked, setIsChecked }) => {
 
     function getTasks() {
         return taskList.map((task) => <div className='task-list' key={task.id}>
-            <Checkbox value={task.id} onChange={handleCheckboxClick} />
+            <Checkbox data-testid='checkbox' value={task.id} onChange={handleClick} />
             <span data-testid='span' className={setStyle(task.id)}>{task.taskName}</span>
             <div id={task.id} onClick={handleDelete}><DeleteIcon className='delete-icon' /></div>
         </div>)

@@ -32,11 +32,20 @@ export const App = () => {
         setIsChecked((prevState) => prevState.filter((task) => task !== currentId));
     }
 
+    const handleCheckboxClick = (e) => {
+        if (e.target.checked) {
+            setIsChecked([...isChecked, e.target.value])
+        } else {
+            setIsChecked(() => isChecked.filter((id) => id !== e.target.value
+            ));
+        }
+    }
+
     return (
         <div className='grid-container'>
             <CompletedTasks isChecked={isChecked} setIsChecked={setIsChecked} taskList={taskList} />
             <NewTask taskList={taskList} setTaskList={setTaskList} lastId={lastId} />
-            <TaskList taskList={taskList} deleteTask={deleteTask} isChecked={isChecked} setIsChecked={setIsChecked} />
+            <TaskList taskList={taskList} deleteTask={deleteTask} isChecked={isChecked} handleCheckboxClick={handleCheckboxClick} />
         </div>
     );
 }
