@@ -56,10 +56,9 @@ describe('TaskList', function () {
             />
         );
 
-        const checkbox = screen.getByTestId('checkbox');
+        const checkbox = screen.getByTestId('teste');
         userEvent.click(checkbox);
         console.log(prettyDOM(checkbox));
-        expect(mockedHandleCheckboxClick).toBeChecked();
         expect(mockedHandleCheckboxClick).toBeCalledTimes(1);
     });
 
