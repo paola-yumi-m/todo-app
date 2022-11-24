@@ -18,7 +18,7 @@ export const TaskList = ({ taskList, deleteTask, isChecked, handleCheckboxClick 
 
     function getTasks() {
         return taskList.map((task) => <div className='task-list' key={task.id}>
-            <Checkbox data-testid='checkbox' value={task.id} onChange={handleCheckboxClick} />
+            <Checkbox data-testid='checkbox' value={task.id} onClick={handleCheckboxClick} />
             <span data-testid='span' className={setStyle(task.id)}>{task.taskName}</span>
             <div id={task.id} onClick={handleDelete} data-testid='delete'><DeleteIcon className='delete-icon' /></div>
         </div>)
