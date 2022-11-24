@@ -1,5 +1,5 @@
-import {fireEvent, prettyDOM, render, screen} from "@testing-library/react";
-import {TaskList} from "../TaskList";
+import { render, screen } from "@testing-library/react";
+import { TaskList } from "../TaskList";
 import userEvent from "@testing-library/user-event";
 
 describe('TaskList', function () {
@@ -44,7 +44,7 @@ describe('TaskList', function () {
     });
 
     it('should call hancleCheckboxClick when checkbox is clicked', function () {
-        const mockedHandleCheckboxClick = jest.fn();
+        const mockedOnChange = jest.fn();
         render(
             <TaskList
                 taskList={[
@@ -52,14 +52,31 @@ describe('TaskList', function () {
                 ]}
                 deleteTask={jest.fn()}
                 isChecked={[]}
-                handleCheckboxClick={mockedHandleCheckboxClick}
+                handleCheckboxClick={mockedOnChange}
             />
         );
 
-        const checkbox = screen.getByTestId('teste');
+        const checkbox = screen.getByRole('checkbox');
         userEvent.click(checkbox);
-        console.log(prettyDOM(checkbox));
-        expect(mockedHandleCheckboxClick).toBeCalledTimes(1);
+        expect(mockedOnChange).toBeCalledTimes(1);
+    });
+
+    it('should delete task when delete button is clicked', function () {
+        const mockHandleDelete = jest.fn();
+        render(
+            <TaskList
+                taskList={[
+                    { taskName: 'Do homework', id: 0 }
+                ]}
+                deleteTask={mockHandleDelete}
+                isChecked={[]}
+                handleCheckboxClick={jest.fn()}
+            />
+        );
+
+        const deleteButton = screen.getByTestId('delete');
+        userEvent.click(deleteButton);
+        expect(mockHandleDelete).toBeCalledTimes(1);
     });
 
 });
