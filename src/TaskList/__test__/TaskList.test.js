@@ -61,7 +61,7 @@ describe('TaskList', function () {
         expect(mockedOnChange).toBeCalledTimes(1);
     });
 
-    it('should delete task when delete button is clicked', function () {
+    it('should call deleteTask when delete button is clicked', function () {
         const mockHandleDelete = jest.fn();
         render(
             <TaskList
