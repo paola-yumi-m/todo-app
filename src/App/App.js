@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
-import { CompletedTasks } from "./CompletedTasks/CompletedTasks";
-import { NewTask } from "./NewTask/NewTask";
-import { TaskList } from "./TaskList/TaskList";
-import './styles.css';
+import { CompletedTasks } from "../CompletedTasks/CompletedTasks";
+import { NewTask } from "../NewTask/NewTask";
+import { TaskList } from "../TaskList/TaskList";
+import '../styles.css';
 import { useState } from "react";
 
 export const App = () => {
