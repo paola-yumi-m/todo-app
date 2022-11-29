@@ -37,10 +37,10 @@ describe('App', function () {
 
         const addButton = screen.getByRole('button', {name: 'Add Task'});
         const inputField = screen.getByPlaceholderText('Task Name');
-        const taskList = screen.getAllByTestId('span');
-        fireEvent.change(inputField, 'Do homework');
+        userEvent.type(inputField, 'Do homework');
         fireEvent.click(addButton);
-
+        const taskList = screen.getAllByTestId('span');
         expect(taskList.length).toBe(4);
+        expect(taskList[3].innerHTML).toBe('Do homework');
     });
 });

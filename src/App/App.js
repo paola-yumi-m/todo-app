@@ -18,7 +18,7 @@ export const App = () => {
             id: 2
         }]);
     const [ isChecked, setIsChecked ] = useState([]);
-    const [ lastId, setLastId ] = useState(0);
+    const [ lastId, setLastId ] = useState(3);
 
     useEffect(() => {
         if (taskList.length > 0) {
