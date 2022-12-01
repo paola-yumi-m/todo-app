@@ -2,21 +2,22 @@ import {render, screen} from "@testing-library/react";
 import {CompletedTasks} from "../CompletedTasks";
 
 describe('CompletedTasks', function () {
+    const taskList = [
+        {
+            taskName: 'Walk the dog',
+            id: 0
+        },
+        {
+            taskName: 'Go shopping',
+            id: 1
+        },
+        {
+            taskName: 'Water plants',
+            id: 2
+        }
+    ];
+
     it('should render completed tasks', function () {
-        const taskList = [
-            {
-                taskName: 'Walk the dog',
-                id: 0
-            },
-            {
-                taskName: 'Go shopping',
-                id: 1
-            },
-            {
-                taskName: 'Water plants',
-                id: 2
-            }
-        ];
         render(
             <CompletedTasks
                 isChecked={["0", "2"]}
