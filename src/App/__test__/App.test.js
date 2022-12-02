@@ -38,10 +38,10 @@ describe('App', function () {
             <App />
         );
 
-        const addButton = screen.getByRole('button', {name: 'Add Task'});
-        fireEvent.click(addButton);
         const inputField = screen.getByPlaceholderText('Task Name');
         userEvent.type(inputField, 'Do homework');
+        const addButton = screen.getByRole('button', {name: 'Add Task'});
+        fireEvent.click(addButton);
         const taskList = screen.getAllByTestId('span');
 
         expect(taskList.length).toBe(4);
@@ -92,5 +92,23 @@ describe('App', function () {
 
         expect(taskList.length).toBe(1);
         expect(taskList[0].innerHTML).toBe('Task 2');
+    });
+
+    it('should remove task from completed when task is deleted', function () {
+        render(
+            <App />
+        );
+
+        const checkboxes = screen.getAllByRole('checkbox');
+        fireEvent.click(checkboxes[0]);
+        fireEvent.click(checkboxes[1]);
+        fireEvent.click(checkboxes[2]);
+        const deleteButtons = screen.getAllByTestId('delete');
+        fireEvent.click(deleteButtons[0]);
+        fireEvent.click(deleteButtons[2]);
+        const completedTasks = screen.getAllByTestId('completed');
+
+        expect(completedTasks.length).toBe(1);
+        expect(completedTasks[0].innerHTML).toBe('Task 2');
     });
 });
