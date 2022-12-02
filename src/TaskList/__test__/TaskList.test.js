@@ -20,6 +20,7 @@ describe('TaskList', function () {
         );
 
         const spanElements = screen.getAllByTestId('span');
+
         expect(spanElements.length).toBe(3);
         expect(spanElements[0].textContent).toBe('Do homework');
         expect(spanElements[1].textContent).toBe('Feed the dog');
@@ -35,13 +36,16 @@ describe('TaskList', function () {
                 handleCheckboxClick={jest.fn()}
             />
         );
+
         const [ firstSpan, secondSpan, thirdSpan ] = screen.getAllByTestId('span');
-        expect(firstSpan.style).toBe('list-item-completed');
+
+        expect(firstSpan.className).toBe('list-item-completed');
         expect(secondSpan.className).toBe('list-item');
         expect(thirdSpan.className).toBe('list-item');
 
         const [ firstCheckbox, secondCheckbox, thirdCheckbox ] = screen.getAllByRole('checkbox');
         userEvent.click(firstCheckbox);
+
         expect(firstCheckbox.checked).toBeTruthy();
         expect(secondCheckbox.checked).toBeFalsy();
         expect(thirdCheckbox.checked).toBeFalsy();
@@ -62,6 +66,7 @@ describe('TaskList', function () {
 
         const checkbox = screen.getByRole('checkbox');
         userEvent.click(checkbox);
+
         expect(mockedOnChange).toBeCalledTimes(1);
     });
 
@@ -80,6 +85,7 @@ describe('TaskList', function () {
 
         const deleteButton = screen.getByTestId('delete');
         userEvent.click(deleteButton);
+
         expect(mockHandleDelete).toBeCalledTimes(1);
     });
 

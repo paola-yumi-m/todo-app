@@ -26,6 +26,7 @@ describe('CompletedTasks', function () {
         );
 
         const completedTasks = screen.getAllByRole('listitem');
+
         expect(completedTasks.length).toBe(2);
         expect(completedTasks[0].innerHTML).toBe('Walk the dog');
         expect(completedTasks[1].innerHTML).toBe('Water plants');
