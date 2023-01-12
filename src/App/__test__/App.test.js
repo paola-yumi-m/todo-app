@@ -111,4 +111,18 @@ describe('App', function () {
         expect(completedTasks.length).toBe(1);
         expect(completedTasks[0].innerHTML).toBe('Task 2');
     });
+
+    it('should do nothing when there are no tasks', function () {
+        render(
+            <App />
+        );
+
+        const deleteButtons = screen.getAllByTestId('delete');
+        fireEvent.click(deleteButtons[0]);
+        fireEvent.click(deleteButtons[1]);
+        fireEvent.click(deleteButtons[2]);
+        const checkboxes = screen.queryAllByRole('checkbox');
+
+        expect(checkboxes.length).toBe(0);
+    });
 });

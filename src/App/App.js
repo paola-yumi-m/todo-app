@@ -23,7 +23,7 @@ export const App = () => {
     useEffect(() => {
         if (taskList.length > 0) {
             setLastId(taskList[taskList.length - 1].id);
-        }
+        } else {}
     }, [taskList, isChecked]);
 
     const deleteTask = (id) => {
